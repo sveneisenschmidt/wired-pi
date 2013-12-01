@@ -111,12 +111,14 @@ while(true) {
 
 ### Prototyping server
 
-WiredPi includes protyping server to control pins without the need to setup from php.
+WiredPi includes a protyping server to control pins without the need to setup them from within a php script.
 Run it by using the built in php server (Since PHP 5.4.0).
 
 ```bash
 $ php -S localhost:8000 scripts/server.php
 ```
+
+![](https://dl.dropboxusercontent.com/u/36028214/GitHUb/wired-pi-server.png)
 
 For more examples have a look at *examples/*.
 
