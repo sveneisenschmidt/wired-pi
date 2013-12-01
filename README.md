@@ -17,7 +17,7 @@ WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
     * [Basic](#basic-usage) 
     * [Read pin](#read-pin)
     * [Read from IN](#read-from-in)
-    * [Prototyping server](#prototyping-server])
+    * [Prototyping server](#prototyping-server)
 
 <a name="installation"></a>
 ## Installation
