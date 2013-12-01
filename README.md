@@ -32,7 +32,7 @@ The recommended way to install is through [Composer](http://getcomposer.org).
 }
 ```
 
-WiredPi uses internally the WiringPi library. To install it follow the following steps:
+WiredPi uses internally the WiringPi library. A big thank you [@drogon](https://twitter.com/drogon). To install it follow the following steps:
 
 ```bash
 $ cd /opt
