@@ -92,8 +92,8 @@ $status = $platform->read($port); // returns 0 or 1
 ```
 By default the pins are set to OUT.
 
-#### Read from IN
-For reading data from a pin set the mode to IN and call read().
+For receiving the status of a pin from IN set the mode to IN.
+
 ```php
 $port = $board->getPort(18);
 $port->setMode(WiredPi\Port::MODE_IN);
