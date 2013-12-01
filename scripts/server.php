@@ -88,7 +88,7 @@ $labels = array(
     <form action="/" method="POST">
         <fieldset>
             <legend>Add/update Port</legend>
-            <label for="channel">GPIO</label> <input name="channel" type="text" size="1" maxlength="2" />
+            <label for="channel">GPIO</label> <input name="channel" type="text" size="4" maxlength="2" />
             <select name="mode">
                 <option value="<?php print WiredPi\Port::MODE_IN; ?>"><?php print $labels[WiredPi\Port::MODE][WiredPi\Port::MODE_IN]; ?></option>
                 <option selected value="<?php print WiredPi\Port::MODE_OUT; ?>"><?php print $labels[WiredPi\Port::MODE][WiredPi\Port::MODE_OUT]; ?></option>
