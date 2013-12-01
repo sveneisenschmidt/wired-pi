@@ -63,8 +63,15 @@ $board->refresh(); // applies the current state to the microcontroller
 // Modification of ports need to be applied again
 $board->getPort(18)->on();
 $board->refresh();
-
 ```
+
+For reading the status of your pin you can use the platform instance you passed to the board.
+
+```php
+$port = $board->getPort(18);
+$status = $platform->read($port); // returns 0 or 1
+```
+
 
 For more examples have a look at *examples/*.
 
