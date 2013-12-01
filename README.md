@@ -16,7 +16,6 @@ WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
 2. [Usage](#usage)
     * [Basic](#basic-usage) 
     * [Read pin](#read-pin)
-    * [Read from IN](#read-from-in)
     * [Prototyping server](#prototyping-server)
 
 <a name="installation"></a>
@@ -91,8 +90,9 @@ For reading the status of your pin you can use the platform instance you passed 
 $port = $board->getPort(18);
 $status = $platform->read($port); // returns 0 or 1
 ```
+By default the pins are set to OUT.
 
-### Read from IN
+#### Read from IN
 For reading data from a pin set the mode to IN and call read().
 ```php
 $port = $board->getPort(18);
