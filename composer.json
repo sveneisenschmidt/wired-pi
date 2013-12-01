@@ -1,7 +1,7 @@
 {
     "name": "se/wired-pi",
     "type": "library",
-    "description": "wired-pi is a library for connecting php and the Raspberry Pi GPIO via wiringPi",
+    "description": "WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi",
     "keywords": ["gpio", "wiringPi"],
     "homepage": "https://github.com/sveneisenschmidt/wired-pi",
     "license": "MIT",
