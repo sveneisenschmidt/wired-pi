@@ -14,6 +14,10 @@ WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
 
 1. [Installation](#installation)
 2. [Usage](#usage)
+    * [Basic](#basic-usage) 
+    * [Read pin](#read-pin)
+    * [Read from IN](#read-from-in)
+    * [Prototyping server](#prototyping-server])
 
 <a name="installation"></a>
 ## Installation
@@ -28,10 +32,25 @@ The recommended way to install is through [Composer](http://getcomposer.org).
 }
 ```
 
+WiredPi uses internally the WiringPi library. To install it follow the following steps:
+
+```bash
+$ cd /opt
+$ sudo mkdir wiringpi
+$ sudo chown $USER ./wiringpi
+$ cd wiringpi
+$ git clone git://git.drogon.net/wiringPi ./
+$ git pull origin
+$ ./build
+```
+
+(The package git-core is needed for git operations. Install it via *sudo apt-get install git-core*. )
+
 <a name="usage"></a>
 
 ## Usage
 
+### Basic usage
 Require the composer autload file and create a new Board.
 
 ```php
@@ -65,6 +84,7 @@ $board->getPort(18)->on();
 $board->refresh();
 ```
 
+### Read pin
 For reading the status of your pin you can use the platform instance you passed to the board.
 
 ```php
@@ -72,6 +92,31 @@ $port = $board->getPort(18);
 $status = $platform->read($port); // returns 0 or 1
 ```
 
+### Read from IN
+For reading data from a pin set the mode to IN and call read().
+```php
+$port = $board->getPort(18);
+$port->setMode(WiredPi\Port::MODE_IN);
+
+// Do something when Pin switches to 1
+while(true) {
+    
+    if($platform->read($port) == '1') {
+        print sprintf('Pin %s went to %s', $port, '1')
+        break;
+    }
+    usleep(5000); // Let the system catch up
+}
+```
+
+### Prototyping server
+
+WiredPi have a protyping server on board to control pins.
+Run it by using the built in php server (Since PHP 5.4.0).
+
+```bash
+$ php -S localhost:8000 scripts/server.php
+```
 
 For more examples have a look at *examples/*.
 
