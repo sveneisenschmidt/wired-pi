@@ -1,9 +1,9 @@
-wired-pi
-========
+WiredPi
+=======
 
 [![Latest Stable Version](https://poser.pugx.org/se/wired-pi/v/stable.png)](https://packagist.org/packages/se/wired-pi)
 
-wired-pi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
+WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
 
 #### Dev branch is master branch.
 
