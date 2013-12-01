@@ -21,15 +21,21 @@ class RaspberryPi implements PlatformInterface
 {
     /**
      *
+     * @const
+     */
+    const EXEC_PATH = '/usr/local/bin/gpio';
+
+    /**
+     *
      * @var string
      */
-    protected $path;
+    protected $path = self::EXEC_PATH;
 
     /**
      *
      * @var string $path
      */
-    public function __construct($path = '/usr/local/bin/gpio')
+    public function __construct($path = self::EXEC_PATH)
     {
         $this->path = trim($path);
     }
@@ -52,10 +58,10 @@ class RaspberryPi implements PlatformInterface
      */
     public function write(Port $port)
     {
-        $init = $this->getModeCommand($port);
+        $mode = $this->getModeCommand($port);
         $write = $this->getWriteCommand($port);
 
-        $command = sprintf('%s && %s', $init, $write);
+        $command = sprintf('%s && %s', $mode, $write);
         passthru($command, $output);
 
         if ($output != 0) {
@@ -71,10 +77,10 @@ class RaspberryPi implements PlatformInterface
      */
     public function read(Port $port)
     {
-        $init = $this->getModeCommand($port);
+        $mode = $this->getModeCommand($port);
         $read = $this->getReadCommand($port);
 
-        $command = sprintf('%s && %s', $init, $read);
+        $command = sprintf('%s && %s', $mode, $read);
         passthru($command, $output);;
 
         return trim((string)$output);
