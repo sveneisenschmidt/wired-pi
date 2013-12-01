@@ -1,10 +1,22 @@
 <?php
-
+/**
+ * This file is part of the WiredPi php library
+ *
+ * (c) Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace SE\Component\WiredPi;
 
 use \SE\Component\WiredPi\Port;
 use \SE\Component\WiredPi\Platform\PlatformInterface;
 
+/**
+ *
+ * @package SE\Component\WiredPi
+ * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ */
 class Board
 {
     /**
@@ -40,13 +52,46 @@ class Board
 
     /**
      *
-     * @param array|\SE\Component\WiredPi\Port $ports
+     * @param integer $channel
+     * @return \SE\Component\WiredPi\Port
      */
-    public function setPorts(array $ports)
+    public function getPort($channel)
     {
+        if(isset($this->ports[$channel]) === true) {
+            return $this->ports[$channel];
+        }
+
+        return null;
+    }
+
+    /**
+     *
+     * @param array|\SE\Component\WiredPi\Port $ports
+     * @throws \InvalidArgumentException
+     */
+    public function setPorts($ports)
+    {
+        if(is_array($ports) === false && $ports instanceof \Iterator === false ) {
+            throw new \InvalidArgumentException(sprintf(
+                '%s::setPorts($ports): Invalid argument $ports of type `%s`.'
+                ,get_class($this)
+                ,gettype($ports)
+            ));
+        }
+
         foreach ($ports as $port) {
             $this->addPort($port);
         }
+    }
+
+
+    /**
+     *
+     * @return array|\SE\Component\WiredPi\Port
+     */
+    public function getPorts()
+    {
+        return $this->ports;
     }
 
     /**

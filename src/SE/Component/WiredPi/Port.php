@@ -1,15 +1,30 @@
 <?php
-
+/**
+ * This file is part of the WiredPi php library
+ *
+ * (c) Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace SE\Component\WiredPi;
 
+/**
+ *
+ * @package SE\Component\WiredPi
+ * @author Sven Eisenschmidt <sven.eisenschmidt@gmail.com>
+ */
 class Port
 {
     /**
      *
      * @const
      */
-    const DIRECTION_IN = 1;
-    const DIRECTION_OUT = 2;
+    const MODE = 'mode';
+    const MODE_IN = 1;
+    const MODE_OUT = 2;
+
+    const STATE = 'state';
     const STATE_ON = 1;
     const STATE_OFF = 0;
 
@@ -23,7 +38,7 @@ class Port
      *
      * @var integer
      */
-    protected $direction = 2;
+    protected $mode = self::MODE_OUT;
 
     /**
      *
@@ -34,17 +49,18 @@ class Port
     /**
      *
      * @param integer $channel
-     * @paran integer $direction
-     * @param inetger $state
+     * @param integer $mode
+     * @param integer $state
+     * @throws \InvalidArgumentException
      */
-    public function __construct($channel, $direction = self::DIRECTION_OUT, $state = self::STATE_OFF)
+    public function __construct($channel, $mode = self::MODE_OUT, $state = self::STATE_OFF)
     {
         if (is_integer($channel) === false) {
             throw new \InvalidArgumentException('First argument must be of type integer');
         }
 
         $this->channel = $channel;
-        $this->setDirection($direction);
+        $this->setMode($mode);
         $this->setState($state);
     }
 
@@ -68,28 +84,30 @@ class Port
 
     /**
      *
-     * @param integer $direction
+     * @param integer $mode
+     * @throws \InvalidArgumentException
      */
-    public function setDirection($direction)
+    public function setMode($mode)
     {
-        if (in_array($direction, array(self::DIRECTION_IN, self::DIRECTION_OUT)) === false) {
-            throw new \InvalidArgumentException(sprintf('Unknown direction: %s', $direction));
+        if (in_array($mode, array(self::MODE_IN, self::MODE_OUT)) === false) {
+            throw new \InvalidArgumentException(sprintf('Unknown mode: %s', $mode));
         }
-        $this->direction = (int)$direction;
+        $this->mode = (int)$mode;
     }
 
     /**
      *
      * @return integer
      */
-    public function getDirection()
+    public function getMode()
     {
-        return $this->direction;
+        return $this->mode;
     }
 
     /**
      *
      * @param integer $state
+     * @throws \InvalidArgumentException
      */
     public function setState($state)
     {

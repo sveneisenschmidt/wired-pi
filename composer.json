@@ -1,0 +1,27 @@
+{
+    "name": "se/wired-pi",
+    "type": "library",
+    "description": "wired-pi is a library for connecting php and the Raspberry Pi GPIO via wiringPi",
+    "keywords": ["gpio", "wiringPi"],
+    "homepage": "https://github.com/sveneisenschmidt/wired-pi",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sven Eisenschmidt",
+            "email": "sven.eisenschmidt@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/http-foundation": "2.3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SE\\Component\\WiredPi\\Tests": "tests/",
+            "SE\\Component\\WiredPi": "src/"
+        }
+    }
+}
