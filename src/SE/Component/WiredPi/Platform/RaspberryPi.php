@@ -31,7 +31,7 @@ class RaspberryPi implements PlatformInterface
         $command = $this->getCommand($port);
         $output = shell_exec($command);
 
-        if($output !== null) {
+        if ($output !== null) {
             throw new \RuntimeException(sprintf('The shell returned an error: %s', $output));
         }
     }
@@ -42,7 +42,7 @@ class RaspberryPi implements PlatformInterface
         $state = null;
         $direction = null;
 
-        switch($port->getState()) {
+        switch ($port->getState()) {
             case Port::STATE_ON:
                 $state = 1;
                 break;
@@ -53,7 +53,7 @@ class RaspberryPi implements PlatformInterface
                 throw new \RuntimeException(sprintf('Invalid state: %s', $port->getState()));
         }
 
-        switch($port->getDirection()) {
+        switch ($port->getDirection()) {
             case Port::DIRECTION_IN:
                 $direction = 'in';
                 break;

@@ -4,20 +4,20 @@ namespace SE\Component\WiredPi;
 
 class Port
 {
-	/**
-	 *
-	 * @const
-	 */
-	const DIRECTION_IN = 1;
-	const DIRECTION_OUT = 2;
-	const STATE_ON = 1;
-	const STATE_OFF = 0;
-
-	/**
+    /**
      *
-	 * @var integer
+     * @const
      */
-	protected $state = 0;
+    const DIRECTION_IN = 1;
+    const DIRECTION_OUT = 2;
+    const STATE_ON = 1;
+    const STATE_OFF = 0;
+
+    /**
+     *
+     * @var integer
+     */
+    protected $state = 0;
 
     /**
      *
@@ -39,8 +39,7 @@ class Port
      */
     public function __construct($channel, $direction = self::DIRECTION_OUT, $state = self::STATE_OFF)
     {
-        if(is_integer($channel) === false)
-        {
+        if (is_integer($channel) === false) {
             throw new \InvalidArgumentException('First argument must be of type integer');
         }
 
@@ -49,23 +48,23 @@ class Port
         $this->setState($state);
     }
 
-	/**
+    /**
      *
-	 * @return void
+     * @return void
      */
-	public function on()
-	{
-		$this->setState(self::STATE_ON);
-	}
+    public function on()
+    {
+        $this->setState(self::STATE_ON);
+    }
 
-	/**
-	 *
-	 * @return void
-	 */
-	public function off()
-	{
-		$this->setState(self::STATE_OFF);
-	}
+    /**
+     *
+     * @return void
+     */
+    public function off()
+    {
+        $this->setState(self::STATE_OFF);
+    }
 
     /**
      *
@@ -73,7 +72,7 @@ class Port
      */
     public function setDirection($direction)
     {
-        if(in_array($direction, array(self::DIRECTION_IN, self::DIRECTION_OUT)) === false) {
+        if (in_array($direction, array(self::DIRECTION_IN, self::DIRECTION_OUT)) === false) {
             throw new \InvalidArgumentException(sprintf('Unknown direction: %s', $direction));
         }
         $this->direction = (int)$direction;
@@ -92,13 +91,13 @@ class Port
      *
      * @param integer $state
      */
-     public function setState($state)
-     {
-        if(in_array($state, array(self::STATE_ON, self::STATE_OFF)) === false) {
+    public function setState($state)
+    {
+        if (in_array($state, array(self::STATE_ON, self::STATE_OFF)) === false) {
             throw new \InvalidArgumentException(sprintf('Unknown state: %s', $state));
         }
         $this->state = (int)$state;
-     }
+    }
 
     /**
      *

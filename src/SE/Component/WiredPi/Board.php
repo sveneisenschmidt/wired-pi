@@ -7,11 +7,11 @@ use \SE\Component\WiredPi\Platform\PlatformInterface;
 
 class Board
 {
-	/**
-	 *
-	 * @var array
-	 */
-	protected $ports = array();
+    /**
+     *
+     * @var array
+     */
+    protected $ports = array();
 
     /**
      *
@@ -28,36 +28,35 @@ class Board
         $this->platform = $platform;
     }
 
-	/**
+    /**
      *
-	 * @param \SE\Component\WiredPi\Port $port
+     * @param \SE\Component\WiredPi\Port $port
      */
-	public function addPort(Port $port)
-	{
-		$channel = $port->getChannel();
-		$this->ports[$channel]= $port;
+    public function addPort(Port $port)
+    {
+        $channel = $port->getChannel();
+        $this->ports[$channel] = $port;
     }
-    
-	/**
-	 *
-	 * @param array|\SE\Component\WiredPi\Port $ports
-	 */
-	public function setPorts(array $ports)
-	{
-	    foreach($ports as $port)
-	    {
-	        $this->addPort($port);
-	    }
-	}
+
+    /**
+     *
+     * @param array|\SE\Component\WiredPi\Port $ports
+     */
+    public function setPorts(array $ports)
+    {
+        foreach ($ports as $port) {
+            $this->addPort($port);
+        }
+    }
 
     /**
      *
      * @return void
      */
-	public function refresh()
-	{
-        foreach($this->ports as $port) {
+    public function refresh()
+    {
+        foreach ($this->ports as $port) {
             $this->platform->refresh($port);
         }
-	}
+    }
 }
