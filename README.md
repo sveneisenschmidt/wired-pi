@@ -73,7 +73,7 @@ $map = new WiredPi\PortMap(array(
 ));
 ```
 
-Now add the port map to your board instance and refresh it. The settings take effect immediately 
+Now add the port map to your board instance and refresh it. The settings take effect immediately.
 
 ```php
 $board->setPorts($map);
