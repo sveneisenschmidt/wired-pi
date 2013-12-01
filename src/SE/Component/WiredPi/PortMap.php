@@ -79,7 +79,7 @@ class PortMap implements \Iterator
      */
     public function key()
     {
-        return key($this->items);
+        return $this->key;
     }
 
     /**

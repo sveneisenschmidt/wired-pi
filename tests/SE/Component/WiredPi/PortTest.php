@@ -19,6 +19,7 @@ class PortTest extends \PHPUnit_Framework_TestCase
     /**
      *
      * @test
+     * @expectedException \InvalidArgumentException
      */
     public function SimpleConstruction()
     {
@@ -26,7 +27,10 @@ class PortTest extends \PHPUnit_Framework_TestCase
 
         $port = new \SE\Component\WiredPi\Port($channel);
         $this->assertSame($channel, $port->getChannel());
+
+        new \SE\Component\WiredPi\Port('abc');
     }
+
     /**
      *
      * @test
@@ -74,5 +78,19 @@ class PortTest extends \PHPUnit_Framework_TestCase
         $port->off();
 
         $this->assertSame(\SE\Component\WiredPi\Port::STATE_OFF, $port->getState());
+    }
+
+    /**
+     *
+     * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedException \InvalidArgumentException
+     */
+    public function InvalidArguments()
+    {
+        $port = new \SE\Component\WiredPi\Port(rand(1,24));
+        $port->setMode('x');
+        $port->setState('y');
+
     }
 }
