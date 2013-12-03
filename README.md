@@ -2,6 +2,7 @@ WiredPi
 =======
 
 [![Latest Stable Version](https://poser.pugx.org/se/wired-pi/v/stable.png)](https://packagist.org/packages/se/wired-pi)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/06a736f4-de13-455d-9d7f-3a5e865db8ea/mini.png)](https://insight.sensiolabs.com/projects/06a736f4-de13-455d-9d7f-3a5e865db8ea)
 
 WiredPi is a library for connecting php and the Raspberry Pi GPIO via wiringPi.
 
